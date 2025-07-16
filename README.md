@@ -1,7 +1,7 @@
 # Личный проект «{{projectTitle}}»
 
-* Студент: [{{userName}}]({{userProfile}}).
-* Наставник: `Неизвестно`.
+* Студент: [Максим Куприн](https://up.htmlacademy.ru/react-individual/3/user/2544571).
+* Наставник: [Алексей Васильев](https://htmlacademy.ru/profile/id1353249).
 
 ---
 
