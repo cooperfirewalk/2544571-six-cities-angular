@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { OfferComponent } from './offer/offer.component';
 
 @Component({
@@ -10,5 +10,4 @@ import { OfferComponent } from './offer/offer.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainPageComponent {
-  @Input({required: true}) offersCount!: number
 }
