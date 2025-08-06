@@ -6,7 +6,12 @@ import { OfferPageComponent } from './pages/offer-page/offer-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { inject } from '@angular/core';
 
+const mockIsAuth = true
+
 const mockCanMatch: CanMatchFn = () => {
+  if(mockIsAuth) {
+    return true
+  }
   const router = inject(Router)
   return new RedirectCommand(router.parseUrl('login'))
 }
