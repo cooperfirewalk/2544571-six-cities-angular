@@ -1,5 +1,4 @@
-<article class="{{cardClass()}}__card place-card">
-  @if(offer().isPremium) {
+ @if(offer().isPremium) {
   <div class="place-card__mark">
     <span>Premium</span>
   </div>
@@ -33,4 +32,3 @@
     </h2>
     <p class="place-card__type">{{ offer().type | titlecase}}</p>
   </div>
-</article>

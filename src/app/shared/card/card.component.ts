@@ -6,7 +6,7 @@ import { CardClass } from './card.model';
 const STARS_STYLE_COEFF = 20;
 
 @Component({
-  selector: 'app-card',
+  selector: 'article[app-card]',
   imports: [CommonModule],
   standalone: true,
   templateUrl: './card.component.html',
