@@ -5,7 +5,7 @@ import { offers } from '../../mocks/offers';
 @Injectable({
   providedIn: 'root',
 })
-export class UsersService {
+export class OffersService {
   get offers() {
     return offers;
   }
