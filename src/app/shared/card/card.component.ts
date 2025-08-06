@@ -2,12 +2,13 @@ import { Component, computed, input } from '@angular/core';
 import { Offer } from '../../app.model';
 import { CommonModule } from '@angular/common';
 import { CardClass } from './card.model';
+import { RouterLink } from '@angular/router';
 
 const STARS_STYLE_COEFF = 20;
 
 @Component({
   selector: 'article[app-card]',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   standalone: true,
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'

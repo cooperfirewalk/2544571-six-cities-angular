@@ -2,10 +2,11 @@ import { Component, computed, inject } from '@angular/core';
 import { OffersService } from '../offers.service';
 import { CardComponent } from '../../shared/card/card.component';
 import { CardClass } from '../../shared/card/card.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-favorites-page',
-  imports: [CardComponent],
+  imports: [CardComponent, RouterLink],
   standalone: true,
   templateUrl: './favorites-page.component.html',
   styleUrl: './favorites-page.component.css'
