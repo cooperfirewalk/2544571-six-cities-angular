@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { OfferComponent } from './offer/offer.component';
+import { CardComponent } from '../../shared/card/card.component';
 
 @Component({
   selector: 'app-main-page',
-  imports: [OfferComponent],
+  imports: [CardComponent],
   standalone: true,
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css',
