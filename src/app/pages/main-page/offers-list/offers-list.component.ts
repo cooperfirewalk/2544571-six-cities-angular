@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { OffersService } from '../../offers.service';
 import { CardComponent } from '../../../shared/card/card.component';
+import { CardClass } from '../../../shared/card/card.model';
 
 @Component({
   selector: 'app-offers-list',
@@ -12,4 +13,5 @@ import { CardComponent } from '../../../shared/card/card.component';
 export class OffersListComponent {
   private offersService = inject(OffersService)
   offers = this.offersService.offers
+  cardClass = CardClass
 }
