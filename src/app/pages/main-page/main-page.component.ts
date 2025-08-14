@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { OfferComponent } from './offer/offer.component';
+import { OffersListComponent } from './offers-list/offers-list.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
-  imports: [OfferComponent],
+  imports: [OffersListComponent, RouterLink],
   standalone: true,
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css',
