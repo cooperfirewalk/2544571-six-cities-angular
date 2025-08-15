@@ -1,36 +1,20 @@
-import { Component, AfterViewInit } from '@angular/core';
-import * as L from 'leaflet';
-
+import { Component } from '@angular/core';
+import { LeafletModule } from '@bluehalo/ngx-leaflet';
+import { latLng, tileLayer } from 'leaflet';
 @Component({
-  selector: 'app-leaflet-map',
+  selector: '[app-leaflet-map]',
   templateUrl: './leaflet-map.component.html',
   styleUrls: ['./leaflet-map.component.css'],
-  standalone: true
+  standalone: true,
+  imports: [LeafletModule]
 })
-export class LeafletMapComponent implements AfterViewInit {
-  private map!: L.Map
-  markers: L.Marker[] = [
-    L.marker([23.7771, 90.3994]) // Dhaka, Bangladesh
-  ];
+export class LeafletMapComponent {
+  options = {
+    layers: [
+      tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
+    ],
+    zoom: 5,
+    center: latLng(46.879966, -121.726909)
+  };
 
-  ngAfterViewInit() {
-    this.initMap();
-    this.centerMap();
-  }
-
-
-  private initMap() {
-    const baseMapURl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-    this.map = L.map('map');
-    L.tileLayer(baseMapURl).addTo(this.map);
-  }
-
-
-  private centerMap() {
-    // Create a boundary based on the markers
-    const bounds = L.latLngBounds(this.markers.map(marker => marker.getLatLng()));
-
-    // Fit the map into the boundary
-    this.map.fitBounds(bounds);
-  }
 }
