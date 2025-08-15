@@ -45,6 +45,6 @@ export class LeafletMapComponent {
       [point.location.latitude, point.location.longitude],
       {
         icon: icon(point.city.name === 'Paris'? defaultCustomIcon: currentCustomIcon)
-        // рандомное условие на выбор иконки
+        // рандомное условие на выбор иконки для маркера
       }) )
 }
