@@ -40,16 +40,11 @@ export class LeafletMapComponent {
     center: latLng(CITIES[0].location.latitude, CITIES[0].location.longitude)
   };
 
-  markers: Layer[] = [
-    marker(
-      [this.offers[0].location.latitude, this.offers[0].location.longitude],
+  markers: Layer[] = this.offers.map((point) =>
+      marker(
+      [point.location.latitude, point.location.longitude],
       {
-        icon: icon(defaultCustomIcon)
-      }),
-    marker(
-      [this.offers[2].location.latitude, this.offers[2].location.longitude],
-      {
-        icon: icon(currentCustomIcon)
-      })
-  ]
+        icon: icon(point.city.name === 'Paris'? defaultCustomIcon: currentCustomIcon)
+        // рандомное условие на выбор иконки
+      }) )
 }
