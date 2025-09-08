@@ -1,8 +1,10 @@
 <section
 class="cities__map map"
 leaflet
-[leafletOptions]="options"
-[leafletLayers]="markers"
+[leafletOptions]="options()"
+[leafletLayers]="markers()"
+[leafletZoom]="zoom"
+[leafletCenter]="center"
 >
 </section>
 

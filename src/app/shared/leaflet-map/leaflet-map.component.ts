@@ -1,10 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, effect, inject} from '@angular/core';
 import { OffersService } from '../../pages/offers.service';
 import { LeafletModule } from '@bluehalo/ngx-leaflet';
 import { icon, IconOptions, Layer, marker } from 'leaflet';
 import { latLng, tileLayer } from 'leaflet';
 import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from './leaflet-map.model';
-import { CITIES } from '../../app.model';
 
 const defaultCustomIcon: IconOptions = {
   iconUrl: URL_MARKER_DEFAULT,
@@ -25,10 +24,18 @@ const currentCustomIcon: IconOptions = {
   imports: [LeafletModule]
 })
 export class LeafletMapComponent {
+  constructor() {
+    effect(() => {
+      this.center = latLng([this.offersService.selectedCity()!.location.latitude, this.offersService.selectedCity()!.location.longitude])
+      this.zoom = this.offersService.selectedCity()!.location.zoom
+    }
+    )
+  }
+
   private offersService = inject(OffersService)
   offers = this.offersService.offers
 
-  options = {
+  options = computed(() => ({ // опции видимо влияют только на ПЕРВУЮ отрисовку карты
     layers: [
       tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
         {
@@ -36,15 +43,28 @@ export class LeafletMapComponent {
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         })
     ],
-    zoom: CITIES[0].location.zoom,
-    center: latLng(CITIES[0].location.latitude, CITIES[0].location.longitude)
-  };
+    zoom: this.offersService.selectedCity()?.location.zoom,
+    center: latLng(this.offersService.selectedCity()!.location.latitude, this.offersService.selectedCity()!.location.longitude)
+  }));
 
-  markers: Layer[] = this.offers().map((point) =>
+  markers = computed<Layer[]>(() => this.offers().map((point) =>
       marker(
-      [point.location.latitude, point.location.longitude],
-      {
-        icon: icon(point.city.name === 'Paris'? defaultCustomIcon: currentCustomIcon)
-        // рандомное условие на выбор иконки для маркера
-      }) )
+        [point.location.latitude, point.location.longitude],
+        {
+          icon: icon(point.city.name === 'Paris' ? defaultCustomIcon : currentCustomIcon)
+          // рандомное условие на выбор иконки для маркера
+        })
+    )
+  )
+
+  zoom = this.offersService.selectedCity()!.location.zoom
+  center = latLng([
+    this.offersService.selectedCity()!.location.latitude,
+    this.offersService.selectedCity()!.location.longitude
+  ])
+
+
+
+
+
 }
