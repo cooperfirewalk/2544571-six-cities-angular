@@ -40,7 +40,7 @@ export class LeafletMapComponent {
     center: latLng(CITIES[0].location.latitude, CITIES[0].location.longitude)
   };
 
-  markers: Layer[] = this.offers.map((point) =>
+  markers: Layer[] = this.offers().map((point) =>
       marker(
       [point.location.latitude, point.location.longitude],
       {

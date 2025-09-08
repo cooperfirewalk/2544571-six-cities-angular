@@ -43,7 +43,7 @@
               </div>
             </div>
             <div class="favorites__places">
-              @for(offer of offers ; track offer.id) {
+              @for(offer of offers() ; track offer.id) {
                 @if (offer.city.name === city) {
                   <article class="{{cardClass.Favorites}}__card place-card"app-card [offer]="offer" [cardClass]="cardClass.Favorites"></article>
                 }

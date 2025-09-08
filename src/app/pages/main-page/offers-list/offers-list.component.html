@@ -1,5 +1,5 @@
 <div class="cities__places-list places__list tabs__content">
-  @for (offer of offers; track offer.id ) {
+  @for (offer of offers(); track offer.id ) {
   <article class="{{cardClass.Cities}}__card place-card"app-card [offer]="offer" [cardClass]="cardClass.Cities"></article>
   }
 </div>
