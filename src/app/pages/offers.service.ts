@@ -7,7 +7,8 @@ import { CITIES, City } from '../app.model';
   providedIn: 'root',
 })
 export class OffersService {
-  selectedCity = signal<City | undefined>(CITIES[0])
+  selectedCity = signal<City | undefined>(CITIES[0]);
+  markedOfferId = signal<string>('');
 
   changeSelectedCity(cityName: string) {
     this.selectedCity.set(

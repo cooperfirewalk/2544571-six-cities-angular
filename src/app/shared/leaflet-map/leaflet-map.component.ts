@@ -51,7 +51,7 @@ export class LeafletMapComponent {
       marker(
         [point.location.latitude, point.location.longitude],
         {
-          icon: icon(point.city.name === 'Paris' ? defaultCustomIcon : currentCustomIcon)
+          icon: icon(point.id === this.offersService.markedOfferId() ? currentCustomIcon : defaultCustomIcon)
           // рандомное условие на выбор иконки для маркера
         })
     )

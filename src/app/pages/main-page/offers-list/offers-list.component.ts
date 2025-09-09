@@ -14,4 +14,12 @@ export class OffersListComponent {
   private offersService = inject(OffersService)
   offers = this.offersService.offers
   cardClass = CardClass
+
+  onMouseEnter(id: string) {
+    this.offersService.markedOfferId.set(id)
+  }
+
+  onMouseLeave() {
+    this.offersService.markedOfferId.set('')
+  }
 }
