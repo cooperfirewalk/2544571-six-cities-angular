@@ -1,7 +1,7 @@
 import { computed, Injectable, signal } from '@angular/core';
 
 import { offers } from '../../mocks/offers';
-import { CITIES, City } from '../app.model';
+import { CITIES, City , SortOption} from '../app.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +9,8 @@ import { CITIES, City } from '../app.model';
 export class OffersService {
   selectedCity = signal<City | undefined>(CITIES[0]);
   markedOfferId = signal<string>('');
+
+  activeSortOption = signal<SortOption>(SortOption.Popular)
 
   changeSelectedCity(cityName: string) {
     this.selectedCity.set(
