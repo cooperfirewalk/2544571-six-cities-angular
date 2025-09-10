@@ -1,8 +1,9 @@
-import { Component, inject} from '@angular/core';
+import { Component, inject, Signal} from '@angular/core';
 import { OffersService } from '../../offers.service';
 import { CardComponent } from '../../../shared/card/card.component';
 import { CardClass } from '../../../shared/card/card.model';
 import { SortPipe } from '../sort.pipe';
+import { Offer } from '../../../app.model';
 
 @Component({
   selector: 'app-offers-list',
@@ -13,10 +14,9 @@ import { SortPipe } from '../sort.pipe';
 })
 export class OffersListComponent {
   private offersService = inject(OffersService)
-  offers = this.offersService.offers
+  offers: Signal<Offer[]> = this.offersService.offers
   cardClass = CardClass
   activeSortOption = this.offersService.activeSortOption
-  // activeSortOption = signal<SortOption>(SortOption.Popular)
 
   onMouseEnter(id: string) {
     this.offersService.markedOfferId.set(id)
