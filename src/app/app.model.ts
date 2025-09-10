@@ -25,6 +25,13 @@ export interface Offer {
   rating: number;
 }
 
+export const enum SortOption {
+  Popular,
+  PriceLowToHigh,
+  PriceHighToLow,
+  TopRatedFirst
+}
+
 export const CITIES: City[] = [
   {
     'name': 'Paris',
