@@ -1,5 +1,12 @@
 <div class="cities__places-list places__list tabs__content">
-  @for (offer of offers; track offer.id ) {
-  <article class="{{cardClass.Cities}}__card place-card"app-card [offer]="offer" [cardClass]="cardClass.Cities"></article>
+  @for (offer of offers() | sort: activeSortOption() ; track offer.id ) {
+  <article
+      class="{{cardClass.Cities}}__card place-card"
+      app-card
+      [offer]="offer"
+      [cardClass]="cardClass.Cities"
+      (mouseenter)="onMouseEnter(offer.id)"
+      (mouseleave)="onMouseLeave()"
+    ></article>
   }
 </div>

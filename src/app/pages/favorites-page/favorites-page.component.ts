@@ -17,7 +17,7 @@ export class FavoritesPageComponent {
   offers = this.offersService.offers
   uniqueCities = computed(() => {
     const array:string[] = []
-    this.offers.forEach((element) => {
+    this.offers().forEach((element) => {
       if (element.city.name !== array[array.length - 1]) {
         array.push(element.city.name);
       }
