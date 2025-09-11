@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ReviewFormComponent } from './review-form/review-form.component';
+import { LeafletMapComponent } from "../../shared/leaflet-map/leaflet-map.component";
+import { OffersListComponent } from "./near-offers-list/near-offers-list.component";
+import { ReviewsListComponent } from "./reviews-list/reviews-list.component";
 
 @Component({
   selector: 'app-offer-page',
-  imports: [RouterLink, ReviewFormComponent],
+  imports: [RouterLink, ReviewFormComponent, LeafletMapComponent, OffersListComponent, ReviewsListComponent],
   standalone: true,
   templateUrl: './offer-page.component.html',
   styleUrl: './offer-page.component.css'

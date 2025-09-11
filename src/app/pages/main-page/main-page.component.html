@@ -63,15 +63,16 @@
             </span>
             <ul class="places__options places__options--custom"
               [class.places__options--opened]="isSortingOpen()">
-              <li class="places__option" [class.places__option--active]="activeSortOption() === sortOption.Popular" tabindex="0" (click)="onSortClick(sortOption.Popular)" (keydown.one)="onSortClick(sortOption.Popular)">Popular</li>
-              <li class="places__option" [class.places__option--active]="activeSortOption() === sortOption.PriceLowToHigh" tabindex="0" (click)="onSortClick(sortOption.PriceLowToHigh)" (keydown.two)="onSortClick(sortOption.PriceLowToHigh)">Price: low to high</li>
-              <li class="places__option" [class.places__option--active]="activeSortOption() === sortOption.PriceHighToLow" tabindex="0" (click)="onSortClick(sortOption.PriceHighToLow)" (keydown.three)="onSortClick(sortOption.PriceHighToLow)">Price: high to low</li>
-              <li class="places__option" [class.places__option--active]="activeSortOption() === sortOption.TopRatedFirst" tabindex="0" (click)="onSortClick(sortOption.TopRatedFirst)" (keydown.four)="onSortClick(sortOption.TopRatedFirst)">Top rated first</li>
+              <li class="places__option" [class.places__option--active]="activeSortOption() === sortOption.Popular" tabindex="0" (click)="onSortClick(sortOption.Popular)">Popular</li>
+              <li class="places__option" [class.places__option--active]="activeSortOption() === sortOption.PriceLowToHigh" tabindex="0" (click)="onSortClick(sortOption.PriceLowToHigh)">Price: low to high</li>
+              <li class="places__option" [class.places__option--active]="activeSortOption() === sortOption.PriceHighToLow" tabindex="0" (click)="onSortClick(sortOption.PriceHighToLow)">Price: high to low</li>
+              <li class="places__option" [class.places__option--active]="activeSortOption() === sortOption.TopRatedFirst" tabindex="0" (click)="onSortClick(sortOption.TopRatedFirst)">Top rated first</li>
             </ul>
           </form>
           <app-offers-list />
         </section>
-        <div app-leaflet-map class="cities__right-section">
+        <div class="cities__right-section">
+          <app-leaflet-map/>
         </div>
       </div>
     </div>

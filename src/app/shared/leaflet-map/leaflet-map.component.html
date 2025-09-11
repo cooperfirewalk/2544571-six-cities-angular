@@ -1,5 +1,5 @@
 <section
-class="cities__map map"
+class="{{isFullOffer()? 'offer' : 'cities'}}__map map"
 leaflet
 [leafletOptions]="options()"
 [leafletLayers]="markers()"

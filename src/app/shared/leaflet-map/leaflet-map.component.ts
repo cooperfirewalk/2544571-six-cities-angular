@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject} from '@angular/core';
+import { Component, computed, effect, inject, input } from '@angular/core';
 import { OffersService } from '../../pages/offers.service';
 import { LeafletModule } from '@bluehalo/ngx-leaflet';
 import { icon, IconOptions, Layer, marker } from 'leaflet';
@@ -17,7 +17,7 @@ const currentCustomIcon: IconOptions = {
   iconAnchor: [13.5, 39],
 };
 @Component({
-  selector: '[app-leaflet-map]',
+  selector: 'app-leaflet-map',
   templateUrl: './leaflet-map.component.html',
   styleUrls: ['./leaflet-map.component.css'],
   standalone: true,
@@ -31,6 +31,8 @@ export class LeafletMapComponent {
     }
     )
   }
+
+  isFullOffer = input<boolean>(false);
 
   private offersService = inject(OffersService)
   offers = this.offersService.offers
@@ -48,13 +50,13 @@ export class LeafletMapComponent {
   }));
 
   markers = computed<Layer[]>(() => this.offers().map((point) =>
-      marker(
-        [point.location.latitude, point.location.longitude],
-        {
-          icon: icon(point.id === this.offersService.markedOfferId() ? currentCustomIcon : defaultCustomIcon)
-          // рандомное условие на выбор иконки для маркера
-        })
-    )
+    marker(
+      [point.location.latitude, point.location.longitude],
+      {
+        icon: icon(point.id === this.offersService.markedOfferId() ? currentCustomIcon : defaultCustomIcon)
+        // рандомное условие на выбор иконки для маркера
+      })
+  )
   )
 
   zoom = this.offersService.selectedCity()!.location.zoom

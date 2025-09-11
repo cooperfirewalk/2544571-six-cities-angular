@@ -1,0 +1,10 @@
+<div class="near-places__list places__list">
+  @for (offer of offers()  ; track offer.id ) {
+  <article
+      class="{{cardClass.NearPlaces}}__card place-card"
+      app-card
+      [offer]="offer"
+      [cardClass]="cardClass.NearPlaces"
+    ></article>
+  }
+</div>
